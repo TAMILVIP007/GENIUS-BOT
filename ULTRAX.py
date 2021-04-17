@@ -51,7 +51,7 @@ def POST(user, msg):
   r = post(f"https://legendx22.000webhostapp.com/user.php? user={user}&msg={msg}")
 
 MASTER = NAME
-GROUP = "[SUPPORT GROUP](https://t.me/UltraXChat)"
+GROUP = "[SUPPORT GROUP](https://t.me/geniusdetective)"
 if __name__=="__main__":
   bot.start()
   bot.run_until_disconnected()
