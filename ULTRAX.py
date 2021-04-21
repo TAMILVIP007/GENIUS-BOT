@@ -1,7 +1,7 @@
-# COPYRIGHT (C) 2021 BY LEGENDX22
+# COPYRIGHT (C) 2021 BY DEVILVARUN
 """
 """
-# MADE BY LEGENDX22 🔥
+# MADE BY DEVILVARUN 🔥
 # MY IDEA H YRR DONT KANG THIS PLEASE
 import asyncio
 import os
@@ -22,15 +22,15 @@ API_HASH = os.environ.get("API_HASH", None)
 token = os.environ.get("TG_BOT_TOKEN_BF_HER", None)
 xbot = TelegramClient("legend", API_ID, API_HASH).start(bot_token=token)
 import time
-MSG = os.environ.get("ALIVE_MSG", "ULTRA X IS BEST")
+MSG = os.environ.get("ALIVE_MSG", "ULTRA GENIUS X IS BEST")
 botnickname = os.environ.get("BOT_NICK_NAME")
 ALIVE_NAME = os.environ.get("ALIVE_NAME")
-BOT = str(botnickname) if botnickname else "υℓтяα χ"
-NAME = str(ALIVE_NAME) if ALIVE_NAME else "υℓтяα χ"
+BOT = str(botnickname) if botnickname else "GENIUS OP BOY"
+NAME = str(ALIVE_NAME) if ALIVE_NAME else "GENIUS BOY"
 PHOTO = os.environ.get("ALIVE_PHOTTO",https://telegra.ph/file/c56be4c7b8b87867465e7.jpg )
 ULTRAX = "[ULTRA X](https://t.me/geniusdetective)"
 VERSION = "0.0.1"
-ALIVE_USERNAME = os.environ.get("ALIVE_USERNAME", None)
+ALIVE_USERNAME = os.environ.get("ALIVE_USERNAME", GENIUS BOY)
 ALIVE_BOT_USERNAME = os.environ.get("ALIVE_BOT_USERNAME", None)
 devs = devs
 ID = ID
