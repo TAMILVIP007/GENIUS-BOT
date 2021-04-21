@@ -1,15 +1,19 @@
-
-"name": "ULTRA GENIUS - UserBot",
-  "description": "An advanced Telethon Userbot, from @doraemonnobitas ",
-  "logo": "https://telegra.ph/file/20d1460bb5824d6d21d49.jpg
+                   
+{
+  "name": "𝗚𝗘𝗡𝗜𝗢𝗨𝗦 𝗕𝗢𝗧",              
+  "description": "The best userbot made by human 🤗. Made with Love ❤️ And Phone And Hardwork and... Nhi aur kahi se to nhi bana😂...For Support contact @owner_detective_varun",
+  
+  "logo": "https://telegra.ph/file/d2993aa982a9bc0f40752.jpg",
   "keywords": [
    "telegram",
    "userbot",
    "userbot",
-   "modular"
-   "prodular
-  "repository":https://github.com/devilvarun/ULTRA-GENIUS-USERBOT ",
-  
+   "modular",
+   "productivity"
+  ],
+  "repository": "https://github.com/devilvarun/GENIUS-BOT",
+  "website": "https://github.com/devilvarun/GENIUS-BOT",
+  "success_url": "https://t.me/savage_team_userbot",
   "stack": "container",
   "env": {
    "ENV": {
@@ -30,7 +34,7 @@
     "value": ""
    },
    "STRING_SESSION": {
-    "description": "Get this value by running python3 telesetup.py locally or https://repl.it/@Anmol10H/Lightning-Userbot#main.py online.",
+    "description": "Get this value by running python3 telesetup.py on repl.it",
     "value": ""
    },  
    "CUSTOM_PMPERMIT": {
@@ -98,7 +102,7 @@
    "PLUGIN_CHANNEL": {
     "description": "Channel Where You Save Your Plugins",
     "value": "",
-    "required": true 
+    "required": true
    },
    "SUDO_USERS": {
     "description": "Users you want to give access to your bot. (Don't allow unknown people)",
@@ -108,8 +112,7 @@
    "PRIVATE_GROUP_ID": {
     "description": "Same value as PRIVATE_GROUP_BOT_API_ID. Must read https://telegra.ph/userbot-Setup-06-06 for knowing how to get the value. Required for pmpermit.",
     "value": "",
-
-"required": true
+    "required": true
    },
    "HEROKU_APP_NAME": {
     "description": "The Value of App Name you filled in right on top.Required for updater to work.",
@@ -117,12 +120,12 @@
     "required": true
    },
    "TG_BOT_TOKEN_BF_HER": {
-    "description": "Needed for inline buttons maker. Make a bot at BotFather and get the token of your bot. Get it else .help won't work.",
+    "description": "Needed for inline buttons maker. Make a bot at [BotFather](http://telegram.dog/BotFather) and get the token of your bot. Get it else .help won't work.",
     "value": "",
     "required": true
    },
    "TG_BOT_USER_NAME_BF_HER": {
-    "description": "Needed for inline buttons maker. Make a bot at BotFather and get the username of your bot. Needed for .help to work.",
+    "description": "Needed for inline buttons maker. Make a bot at [BotFather](http://telegram.dog/BotFather) and get the username of your bot. Needed for .help to work.",
     "value": "",
     "required": true
    },
@@ -131,16 +134,7 @@
     "value": "",
     "required": false
    },
-   "TG_GRUP": {
-    "description": "Telegram Grup Name Starts With @ like, @lightningsupport, If No Name Leave It Default. Required For Alive ",
-    "value": "Not Yet😁😁",
-    "required": true
-   }, 
-   "TG_CHANNEL": {
-    "description": "Telegram Channel  Starts With @ like @blacklightningot, If No Channel Leave It Default. Required For Alive ",
-    "value": "Not Yet😁😁",
-    "required": true
-   }, 
+   
    "SPAM": {
     "description": "Number of messages one can send in your PM before being approved. By default, it is 5.",
     "value": "5",
@@ -157,12 +151,12 @@
     "required": false
    },
    "ALIVE_PIC": {
-    "description": "telegra.ph link to theimage you want as alive pic, leave blank for sticker",
+    "description": "telegra.ph link to theimage you want as alive pic, leave blank for defualt pic",
     "value": "",
     "required": false
    },
    "PMPERMIT_PIC": {
-   "description": "telegra.ph link to theimage you want as pmpermit pic, leave blank for default one!",
+   "description": "telegra.ph link to theimage you want as pmpermit pic, leave blank for default one! Leave blank for default pic",
    "value": "",
    "required": false
    },
@@ -179,3 +173,5 @@
    }
   }]
  }
+ 
+© 2021 GitHub, Inc.
