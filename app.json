@@ -1,4 +1,5 @@
-  "name": "ULTRA GENIUS - UserBot",
+SAMMER BHAI:
+"name": "ULTRA GENIUS - UserBot",
   "description": "An advanced Telethon Userbot, from @doraemonnobitas ",
   "logo": "https://telegra.ph/file/20d1460bb5824d6d21d49.jpg
   "keywords": [
@@ -107,7 +108,8 @@
    "PRIVATE_GROUP_ID": {
     "description": "Same value as PRIVATE_GROUP_BOT_API_ID. Must read https://telegra.ph/userbot-Setup-06-06 for knowing how to get the value. Required for pmpermit.",
     "value": "",
-    "required": true
+
+"required": true
    },
    "HEROKU_APP_NAME": {
     "description": "The Value of App Name you filled in right on top.Required for updater to work.",
@@ -115,12 +117,12 @@
     "required": true
    },
    "TG_BOT_TOKEN_BF_HER": {
-    "description": "Needed for inline buttons maker. Make a bot at [BotFather](http://telegram.dog/BotFather) and get the token of your bot. Get it else .help won't work.",
+    "description": "Needed for inline buttons maker. Make a bot at BotFather and get the token of your bot. Get it else .help won't work.",
     "value": "",
     "required": true
    },
    "TG_BOT_USER_NAME_BF_HER": {
-    "description": "Needed for inline buttons maker. Make a bot at [BotFather](http://telegram.dog/BotFather) and get the username of your bot. Needed for .help to work.",
+    "description": "Needed for inline buttons maker. Make a bot at BotFather and get the username of your bot. Needed for .help to work.",
     "value": "",
     "required": true
    },
