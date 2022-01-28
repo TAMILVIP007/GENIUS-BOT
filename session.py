@@ -24,7 +24,7 @@ while True:
        "Thanks for Choosing ULTRA X Have A Good Time....Note That When You Terminate the Old Session ComeBack And Genrate A New String Session Old One Wont Work"
    )
  except Exception as e:
-  print(str(e))
+  print(e)
   print(
       "\nWrong phone number \n make sure its with correct country code. Example : +919961998999 ! Kindly Retry"
   )

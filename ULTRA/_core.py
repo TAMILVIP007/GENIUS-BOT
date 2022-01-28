@@ -111,5 +111,5 @@ async def load(event):
         qwe = await eor(event, f"Successfully loaded {shortname}")
     except Exception as e:
         await qwe.edit(
-            f"ULTRA X could not load {shortname} because of the following error.\n{str(e)}"
+            f'ULTRA X could not load {shortname} because of the following error.\n{e}'
         )

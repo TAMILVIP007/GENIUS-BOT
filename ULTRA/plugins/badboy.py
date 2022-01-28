@@ -44,8 +44,8 @@ async def _(event):
         await event.edit(animation_chars[i % 14])
 
 
-@bot.on(admin_cmd(pattern=f"bombs$", outgoing=True))
-@bot.on(sudo_cmd(pattern=f"bombs$", allow_sudo=True))
+@bot.on(admin_cmd(pattern='bombs$', outgoing=True))
+@bot.on(sudo_cmd(pattern='bombs$', allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -106,7 +106,7 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=f"kill$", outgoing=True))
-@bot.on(sudo_cmd(pattern=f"kill$", allow_sudo=True))
+@bot.on(sudo_cmd(pattern='kill$', allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -181,7 +181,7 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=f"hypno$", outgoing=True))
-@bot.on(sudo_cmd(pattern=f"hypno$", allow_sudo=True))
+@bot.on(sudo_cmd(pattern='hypno$', allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -247,7 +247,7 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=f"charging$"))
-@bot.on(sudo_cmd(pattern=f"charging$", allow_sudo=True))
+@bot.on(sudo_cmd(pattern='charging$', allow_sudo=True))
 async def timer_blankx(e):
     if e.fwd_from:
         return
@@ -258,7 +258,7 @@ async def timer_blankx(e):
     )
     j = 10
     k = j
-    for j in range(j):
+    for _ in range(k):
         await e.edit(txt + str(k))
         k += 10
         await asyncio.sleep(1)
@@ -542,11 +542,7 @@ async def _(message):
     event = await edit_or_reply(message, "`Dumping...`")
     u, t, g, o, s, n = inp.split(), "🗑", "<(^_^ <)", "(> ^_^)>", "⠀ ", "\n"
     h = [(u[0], u[1], u[2]), (u[0], u[1], ""), (u[0], "", "")]
-    for something in reversed(
-        [
-            y
-            for y in (
-                [
+    for something in reversed([[
                     "".join(x)
                     for x in (
                         f + (s, g, s + s * f.count(""), t),
@@ -557,11 +553,7 @@ async def _(message):
                         f[:i] + (s * 3 + s * f.count(""), o, t),
                         f[:i] + (s * 3 + s * f.count(""), g, t),
                     )
-                ]
-                for i, f in enumerate(reversed(h))
-            )
-        ]
-    ):
+                ] for i, f in enumerate(reversed(h))]):
         for something_else in something:
             await asyncio.sleep(0.3)
             try:

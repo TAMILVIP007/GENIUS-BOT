@@ -21,7 +21,7 @@ from ULTRAX import devs
 async def get_full_user(event):  
     args = event.pattern_match.group(1).split(':', 1)
     extra = None
-    if event.reply_to_msg_id and not len(args) == 2:
+    if event.reply_to_msg_id and len(args) != 2:
         previous_message = await event.get_reply_message()
         user_obj = await event.client.get_entity(previous_message.sender_id)
         extra = event.pattern_match.group(1)
@@ -44,7 +44,7 @@ async def get_full_user(event):
         try:
             user_obj = await event.client.get_entity(user)
         except Exception as err:
-            return await event.edit("**SOMETHING W3NT WRONG 🤔**", str(err))           
+            return await event.edit("**SOMETHING W3NT WRONG 🤔**", str(err))
     return user_obj, extra
 
 
@@ -64,12 +64,12 @@ async def gspider(ULTRA):
     lol = ULTRA
     sender = await lol.get_sender()
     me = await lol.client.get_me()
-    if not sender.id == me.id:
+    if sender.id != me.id:
         friday = await lol.reply("GBanning This Retard DumbAss😁😁")
     else:
         friday = await lol.edit("Wait Processing.....")
     me = await ULTRA.client.get_me()
-    await friday.edit(f"Global Ban Is Coming ! Wait And Watch You bitch😎🔥")
+    await friday.edit('Global Ban Is Coming ! Wait And Watch You bitch😎🔥')
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
     await ULTRA.get_chat()
@@ -87,12 +87,13 @@ async def gspider(ULTRA):
         if not reason:
             reason = "Private"
     except:
-        return await friday.edit(f"**Something W3NT Wrong 🤔**")
+        return await friday.edit('**Something W3NT Wrong 🤔**')
     if user:
         if user.id in devs:
             return await friday.edit(
-                f"**Didn't, Your Father Teach You ? That You Can't Gban My Creator😑😑🖕**"
+                "**Didn't, Your Father Teach You ? That You Can't Gban My Creator😑😑🖕**"
             )
+
         try:
             from ULTRA.modules.sql_helper.gmute_sql import gmute
         except:
@@ -114,10 +115,10 @@ async def gspider(ULTRA):
             except:
                 b += 1
     else:
-        await friday.edit(f"**Reply to a user !!**")
+        await friday.edit('**Reply to a user !!**')
     try:
         if gmute(user.id) is False:
-            return await friday.edit(f"**Error! User probably already gbanned.**")
+            return await friday.edit('**Error! User probably already gbanned.**')
     except:
         pass
     POST(user=user.id, msg=ULTRA.text[5:])
@@ -132,12 +133,12 @@ async def gspider(ULTRA):
     lol = ULTRA
     sender = await lol.get_sender()
     me = await lol.client.get_me()
-    if not sender.id == me.id:
+    if sender.id != me.id:
         friday = await lol.reply("`Wait Let Me Process`")
     else:
         friday = await lol.edit("Just a Second ")
     me = await ULTRA.client.get_me()
-    await friday.edit(f"Trying To Ungban User !")
+    await friday.edit('Trying To Ungban User !')
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
     await ULTRA.get_chat()

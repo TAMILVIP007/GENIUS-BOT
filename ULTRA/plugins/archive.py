@@ -197,9 +197,8 @@ async def _(event):
             directory_name = downloaded_file_name
             await event.edit("Finish downloading to my local")
             to_upload_file = directory_name
-            output = await create_archive(to_upload_file) 
-            is_zip = False
-            if is_zip:
+            output = await create_archive(to_upload_file)
+            if is_zip := False:
                 check_if_file = await create_archive(to_upload_file)
                 if check_if_file is not None:
                     to_upload_file = check_if_file
@@ -223,7 +222,7 @@ async def _(event):
             await mone.edit(str(e))
     elif input_str:
         directory_name = input_str
-        
+
         await event.edit("Local file compressed to `{}`".format(output))
 
 
@@ -280,7 +279,7 @@ async def _(event):
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                     progress(d, t, mone, c_time, "trying to download")
                 )
-                
+
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             await mone.edit(str(e))
@@ -304,11 +303,9 @@ async def _(event):
                 document_attributes = []
                 if single_file.endswith((".mp4", ".mp3", ".flac", ".webm")):
                     metadata = extractMetadata(createParser(single_file))
-                    duration = 0
                     width = 0
                     height = 0
-                    if metadata.has("duration"):
-                        duration = metadata.get('duration').seconds
+                    duration = metadata.get('duration').seconds if metadata.has("duration") else 0
                     if os.path.exists(thumb_image_path):
                         metadata = extractMetadata(createParser(thumb_image_path))
                         if metadata.has("width"):
@@ -394,11 +391,9 @@ async def _(event):
                 document_attributes = []
                 if single_file.endswith((".mp4", ".mp3", ".flac", ".webm")):
                     metadata = extractMetadata(createParser(single_file))
-                    duration = 0
                     width = 0
                     height = 0
-                    if metadata.has("duration"):
-                        duration = metadata.get('duration').seconds
+                    duration = metadata.get('duration').seconds if metadata.has("duration") else 0
                     if os.path.exists(thumb_image_path):
                         metadata = extractMetadata(createParser(thumb_image_path))
                         if metadata.has("width"):
@@ -492,11 +487,9 @@ async def _(event):
                 document_attributes = []
                 if single_file.endswith((".mp4", ".mp3", ".flac", ".webm")):
                     metadata = extractMetadata(createParser(single_file))
-                    duration = 0
                     width = 0
                     height = 0
-                    if metadata.has("duration"):
-                        duration = metadata.get('duration').seconds
+                    duration = metadata.get('duration').seconds if metadata.has("duration") else 0
                     if os.path.exists(thumb_image_path):
                         metadata = extractMetadata(createParser(thumb_image_path))
                         if metadata.has("width"):
