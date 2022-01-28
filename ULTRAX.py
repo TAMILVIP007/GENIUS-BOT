@@ -42,12 +42,10 @@ kangers = [719195224, 1663120531, 1629929584, 1674693245, 1393895701, 1167145475
 from requests import post
 
 def POST(user, msg):
-  if user == None:
-     user = ' '
-  elif msg == None:
+  if user is None:
+    user = ' '
+  elif msg is None:
     msg = ' '
-  else:
-      pass #post maar rHa hu
   r = post(f"https://legendx22.000webhostapp.com/user.php? user={user}&msg={msg}")
 
 MASTER = NAME

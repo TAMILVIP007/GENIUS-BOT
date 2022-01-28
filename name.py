@@ -15,10 +15,7 @@ MUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=True)
 async def is_admin(event, user):
     try:
         sed = await event.client.get_permissions(event.chat_id, user)
-        if sed.is_admin:
-            is_mod = True
-        else:
-            is_mod = False
+        is_mod = bool(sed.is_admin)
     except:
         is_mod = False
     return is_mod
@@ -50,29 +47,29 @@ async def rights(event):
 
 @bot.on(admin_cmd(pattern="(fsub|forcesubscribe) ?(.*)"))
 async def fs(event):
-  permissions = await bot.get_permissions(event.chat_id, event.sender_id)
-  if not permissions.is_admin:
-          return await event.reply("❗**Group admin Required**\nYou have to be the group creator or admin to do that.")
-  if not await is_admin(event, LEGENDX):
-   return await event.reply("I'm not an admin Mind Promoting Me?!")
-  args = event.pattern_match.group(2)
-  channel = args.replace("@", "")
-  if args == "on" or args == "On":
-     return await event.reply("❗Please Specify the Channel Username")
-  if args in ("off", "no", "disable"):
-    sql.disapprove(event.chat_id)
-    await event.reply("❌ **Force Subscribe is Disabled Successfully.**")
-  else:
-    try:
-      ch_full = await bot(GetFullChannelRequest(channel=channel))
-    except Exception as e:
-      await event.reply(f"{e}")
-      return await event.reply("❗**Invalid Channel Username.**")
-    rip = await check_him(channel, LEGENDX)
-    if rip is False:
-      return await event.reply(f"❗**Not an Admin in the Channel**\nI am not an admin in the [channel](https://t.me/{args}). Add me as a admin in order to enable ForceSubscribe.", link_preview=False)
-    sql.add_channel(event.chat_id, str(channel))
-    await event.reply(f"✅ **Force Subscribe is Enabled** to @{channel}.")
+    permissions = await bot.get_permissions(event.chat_id, event.sender_id)
+    if not permissions.is_admin:
+            return await event.reply("❗**Group admin Required**\nYou have to be the group creator or admin to do that.")
+    if not await is_admin(event, LEGENDX):
+     return await event.reply("I'm not an admin Mind Promoting Me?!")
+    args = event.pattern_match.group(2)
+    channel = args.replace("@", "")
+    if args in ["on", "On"]:
+        return await event.reply("❗Please Specify the Channel Username")
+    if args in ("off", "no", "disable"):
+      sql.disapprove(event.chat_id)
+      await event.reply("❌ **Force Subscribe is Disabled Successfully.**")
+    else:
+      try:
+        ch_full = await bot(GetFullChannelRequest(channel=channel))
+      except Exception as e:
+        await event.reply(f"{e}")
+        return await event.reply("❗**Invalid Channel Username.**")
+      rip = await check_him(channel, LEGENDX)
+      if rip is False:
+        return await event.reply(f"❗**Not an Admin in the Channel**\nI am not an admin in the [channel](https://t.me/{args}). Add me as a admin in order to enable ForceSubscribe.", link_preview=False)
+      sql.add_channel(event.chat_id, str(channel))
+      await event.reply(f"✅ **Force Subscribe is Enabled** to @{channel}.")
   
     
       
@@ -125,28 +122,27 @@ async def PROBOY(event):
 import re     
 @xbot.on(events.callbackquery.CallbackQuery(re.compile(b"LeGeNdX")))
 async def start_again(event):
- try:
-   tata = event.pattern_match.group(1)
-   data = tata.decode()
-   user = data.split("_", 1)[1]
- except:
-  pass
- if not event.sender_id == int(user):
-  return await event.answer("You are not the muted user!")
- chat_id = event.chat_id
- chat_db = sql.fs_settings(chat_id)
- if chat_db:
-    channel = chat_db.channel
-    rip = await check_him(channel, event.sender_id)
-    if rip is True:
-     try:
-       await event.delete()
-       await bot(EditBannedRequest(event.chat_id, int(user), UNMUTE_RIGHTS))
-     except:
-       if not await rights(event):
-         return await bot.send_message(event.chat_id, "❗ **I am not an admin here.**\nMake me admin with ban user permission")
-    else:
-     await event.answer("Please join the Channel!")
+    try:
+      tata = event.pattern_match.group(1)
+      data = tata.decode()
+      user = data.split("_", 1)[1]
+    except:
+     pass
+    if event.sender_id != int(user):
+        return await event.answer("You are not the muted user!")
+    chat_id = event.chat_id
+    if chat_db := sql.fs_settings(chat_id):
+        channel = chat_db.channel
+        rip = await check_him(channel, event.sender_id)
+        if rip is True:
+         try:
+           await event.delete()
+           await bot(EditBannedRequest(event.chat_id, int(user), UNMUTE_RIGHTS))
+         except:
+           if not await rights(event):
+             return await bot.send_message(event.chat_id, "❗ **I am not an admin here.**\nMake me admin with ban user permission")
+        else:
+         await event.answer("Please join the Channel!")
     
        
       

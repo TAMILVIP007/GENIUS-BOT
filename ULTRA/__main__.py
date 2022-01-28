@@ -63,23 +63,22 @@ for name in files:
         load_pro(shortname.replace(".py", ""))
 
 
-if  EXTRA_PLUGS == True:
-    os.system("git clone https://github.com/ULTRA-OP/ULTRA_PLUGS.git ./ULTRA/plugins/")
-    path = "ULTRA/plugins/*.py"
-    files = glob.glob(path)
-    for name in files:
-        with open(name) as a:
-            patt = Path(a.name)
-            plugin_name = patt.stem
-            try:
-                load_module(plugin_name.replace(".py", ""))
-                if not plugin_name.startswith("__") or plugin_name.startswith("_"):
-                    print ('INSTALLING ALL MODULES', plugin_name)
-            except:
-                pass
+path = "ULTRA/plugins/*.py"
+if EXTRA_PLUGS == True:
+  os.system("git clone https://github.com/ULTRA-OP/ULTRA_PLUGS.git ./ULTRA/plugins/")
+  files = glob.glob(path)
+  for name in files:
+      with open(name) as a:
+          patt = Path(a.name)
+          plugin_name = patt.stem
+          try:
+              load_module(plugin_name.replace(".py", ""))
+              if not plugin_name.startswith("__") or plugin_name.startswith("_"):
+                  print ('INSTALLING ALL MODULES', plugin_name)
+          except:
+              pass
 
 else:
-  path = 'ULTRA/plugins/*.py'
   files = glob.glob(path)
   for name in files:
       with open(name) as f:

@@ -22,96 +22,96 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "υℓтяα χ"
 @borg.on(admin_cmd(pattern=r"ihelp ?(.*)", outgoing=True))
 @borg.on(sudo_cmd(pattern=r"ihelp ?(.*)", outgoing=True, allow_sudo=True))
 async def cmd_list(event):
-    if not event.text[0].isalpha() and event.text[0] not in ("/" , "#", "-", "_", "@"):
-        tgbotusername = Var.TG_BOT_USER_NAME_BF_HER
-        input_str = event.pattern_match.group(1)
-        if tgbotusername is None or input_str == "text":
+    if event.text[0].isalpha() or event.text[0] in ("/", "#", "-", "_", "@"):
+        return
+    tgbotusername = Var.TG_BOT_USER_NAME_BF_HER
+    input_str = event.pattern_match.group(1)
+    if tgbotusername is None or input_str == "text":
 
-            string = ""
+        string = ""
 
-            for i in CMD_LIST:
+        for i in CMD_LIST:
 
-                string += "â¡ï¸" + i + "\n"
+            string += "â¡ï¸" + i + "\n"
 
-                for iter_list in CMD_LIST[i]:
+            for iter_list in CMD_LIST[i]:
 
-                    string += "    " + str(iter_list) + ""
-
-                    string += "\n"
+                string += "    " + str(iter_list) + ""
 
                 string += "\n"
 
-            if len(string) > 69:
+            string += "\n"
 
-                with io.BytesIO(str.encode(string)) as out_file:
+        if len(string) > 69:
 
-                    out_file.name = "cmd.txt"
+            with io.BytesIO(str.encode(string)) as out_file:
 
-                    await bot.send_file(
+                out_file.name = "cmd.txt"
 
-                        event.chat_id,
+                await bot.send_file(
 
-                        out_file,
+                    event.chat_id,
 
-                        force_document=True,
+                    out_file,
 
-                        allow_cache=False,
+                    force_document=True,
 
-                        caption="¢σммαη∂ѕ ιη υℓтяα χ вσт",
+                    allow_cache=False,
 
-                        reply_to=reply_to_id
+                    caption="¢σммαη∂ѕ ιη υℓтяα χ вσт",
 
-                    )
+                    reply_to=reply_to_id
 
-                    await event.delete()
+                )
 
-            else:
-
-                await event.edit(string)
-
-        elif input_str:
-
-            if input_str in CMD_LIST:
-
-                string = "Cᴏᴍᴍᴀɴᴅ ғᴏᴜɴᴅ ɪɴ {}:\n".format(input_str)
-
-                for i in CMD_LIST[input_str]:
-
-                    string += "  " + i
-
-                    string += "\n"
-
-                await event.edit(string)
-
-            else:
-
-                await event.edit(input_str + " ɪs ɴᴏᴛ ᴀ ᴠᴀʟɪᴅ Pʟᴜɢɪɴ")
+                await event.delete()
 
         else:
 
-            help_string = f""" υℓтяα χ вσт Hᴇʟᴘ ᴘʀᴏᴠɪᴅᴇᴅ ʙʏ тєαм υℓтяα χ\n
+            await event.edit(string)
 
-Dᴏ `.help` PLUGIN_NAME ғᴏʀ ᴄᴏᴍᴍᴀɴᴅs, ɪғ ɪɴ ᴄᴀsᴇ Pᴏᴘ-Uᴘ ᴅᴏᴇsɴ'ᴛ ᴀᴘᴘᴇᴀʀ."""
+    elif input_str:
 
-            results = await bot.inline_query(  # pylint:disable=E0602
+        if input_str in CMD_LIST:
 
-                tgbotusername,
+            string = "Cᴏᴍᴍᴀɴᴅ ғᴏᴜɴᴅ ɪɴ {}:\n".format(input_str)
 
-                help_string
+            for i in CMD_LIST[input_str]:
 
-            )
+                string += "  " + i
 
-            await results[0].click(
+                string += "\n"
 
-                event.chat_id,
+            await event.edit(string)
 
-                reply_to=event.reply_to_msg_id,
+        else:
 
-                hide_via=True
+            await event.edit(input_str + " ɪs ɴᴏᴛ ᴀ ᴠᴀʟɪᴅ Pʟᴜɢɪɴ")
 
-            )
+    else:
 
-            await event.delete()
+        help_string = " υℓтяα χ вσт Hᴇʟᴘ ᴘʀᴏᴠɪᴅᴇᴅ ʙʏ тєαм υℓтяα χ\n\x1f\x1fDᴏ `.help` PLUGIN_NAME ғᴏʀ ᴄᴏᴍᴍᴀɴᴅs, ɪғ ɪɴ ᴄᴀsᴇ Pᴏᴘ-Uᴘ ᴅᴏᴇsɴ'ᴛ ᴀᴘᴘᴇᴀʀ."
+
+
+        results = await bot.inline_query(  # pylint:disable=E0602
+
+            tgbotusername,
+
+            help_string
+
+        )
+
+        await results[0].click(
+
+            event.chat_id,
+
+            reply_to=event.reply_to_msg_id,
+
+            hide_via=True
+
+        )
+
+        await event.delete()
 
             
 

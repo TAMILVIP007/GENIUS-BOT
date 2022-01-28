@@ -297,10 +297,11 @@ async def carbon_api(e):
     await e.client.send_file(
         e.chat_id,
         file,
-        caption=f"Here's your Karbon2",
+        caption="Here's your Karbon2",
         force_document=True,
         reply_to=e.message.reply_to_msg_id,
     )
+
 
     os.remove("./carbon.png")
     # Removing carbon.png after uploading
@@ -362,10 +363,11 @@ async def carbon_api(e):
     await e.client.send_file(
         e.chat_id,
         file,
-        caption=f"Here's your Karbon3",
+        caption="Here's your Karbon3",
         force_document=True,
         reply_to=e.message.reply_to_msg_id,
     )
+
 
     os.remove("./carbon.png")
     # Removing carbon.png after uploading
@@ -427,10 +429,11 @@ async def carbon_api(e):
     await e.client.send_file(
         e.chat_id,
         file,
-        caption=f"Here's your Karbon4 ",
+        caption="Here's your Karbon4 ",
         force_document=True,
         reply_to=e.message.reply_to_msg_id,
     )
+
 
     os.remove("./carbon.png")
     # Removing carbon.png after uploading
@@ -497,10 +500,11 @@ async def carbon_api(e):
     await e.client.send_file(
         e.chat_id,
         file,
-        caption=f"Here's your karbonrgb",
+        caption="Here's your karbonrgb",
         force_document=True,
         reply_to=e.message.reply_to_msg_id,
     )
+
     os.remove("./carbon.png")
     # Removing carbon.png after uploading
     await madboy.delete()  # Deleting msg
@@ -596,10 +600,11 @@ async def carbon_api(e):
     await e.client.send_file(
         e.chat_id,
         file,
-        caption=f"Here's your karbonrgb",
+        caption="Here's your karbonrgb",
         force_document=True,
         reply_to=e.message.reply_to_msg_id,
     )
+
     os.remove("./carbon.png")
     await madboy.delete()  # Deleting msg
 

@@ -1,9 +1,10 @@
 import os
 from telethon.tl.types import ChatBannedRights
-ENV = bool(os.environ.get("ENV", False))
-if ENV:
+if ENV := bool(os.environ.get("ENV", False)):
     import os
-    class Config(object):
+
+
+    class Config((object)):
         LOGGER = True
         # Get this value from my.telegram.org! Please do not steal
         LOCATION = os.environ.get("LOCATION", None)
@@ -35,7 +36,7 @@ if ENV:
         #spootifie
         SPOTIFY_USERNAME = os.environ.get("SPOTIFY_USERNAME", None)
         SPOTIFY_PASS = os.environ.get("SPOTIFY_PASS", None)
-        
+
         # bot nick name e.g modified without bot
         botnickname = os.environ.get("BOT_NICK_NAME", None)
         SPOTIFY_BIO_PREFIX = os.environ.get("SPOTIFY_BIO_PREFIX", None)
@@ -45,7 +46,10 @@ if ENV:
         # TG API limit. A message can have maximum 4096 characters!
         MAX_MESSAGE_SIZE_LIMIT = 4095
         # set blacklist_chats where you do not want ULTRA's features
-        UB_BLACK_LIST_CHAT = set(int(x) for x in os.environ.get("UB_BLACK_LIST_CHAT", "").split())
+        UB_BLACK_LIST_CHAT = {
+            int(x) for x in os.environ.get("UB_BLACK_LIST_CHAT", "").split()
+        }
+
         # maximum number of messages for antiflood
         MAX_ANTI_FLOOD_MESSAGES = 10
         # warn mode for anti flood
@@ -75,19 +79,14 @@ if ENV:
         #heroku 
         HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
         HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
-        # send .get_id in any channel to forward all your NEW PMs to this group
-        PRIVATE_GROUP_BOT_API_ID = os.environ.get("PRIVATE_GROUP_BOT_API_ID", None)
-        if PRIVATE_GROUP_BOT_API_ID:
+        if PRIVATE_GROUP_BOT_API_ID := os.environ.get(
+            "PRIVATE_GROUP_BOT_API_ID", None
+        ):
             PRIVATE_GROUP_BOT_API_ID = int(PRIVATE_GROUP_BOT_API_ID)
-        # send .get_id in your private channel to forward all your Private messages
-        
-        TAG_LOGGER = os.environ.get("TAG_LOGGER", None)
-        if TAG_LOGGER: TAG_LOGGER = int(TAG_LOGGER)
-        
-        #Tag LOGGER
-        
-        PM_LOGGR_BOT_API_ID = os.environ.get("PM_LOGGR_BOT_API_ID", None)
-        if PM_LOGGR_BOT_API_ID: PM_LOGGR_BOT_API_ID = int(PM_LOGGR_BOT_API_ID)
+        if TAG_LOGGER := os.environ.get("TAG_LOGGER", None):
+            TAG_LOGGER = int(TAG_LOGGER)
+        if PM_LOGGR_BOT_API_ID := os.environ.get("PM_LOGGR_BOT_API_ID", None):
+            PM_LOGGR_BOT_API_ID = int(PM_LOGGR_BOT_API_ID)
         # For Databases
         # can be None in which case plugins requiring
         # DataBase would not work
@@ -107,7 +106,7 @@ if ENV:
         # specify list of users allowed to use bot
         # WARNING: be careful who you grant access to your bot.
         # malicious users could do ".exec rm -rf /*"
-        SUDO_USERS = set(int(x) for x in os.environ.get("SUDO_USERS", "").split())
+        SUDO_USERS = {int(x) for x in os.environ.get("SUDO_USERS", "").split()}
         # VeryStream only supports video formats
         VERY_STREAM_LOGIN = os.environ.get("VERY_STREAM_LOGIN", None)
         VERY_STREAM_KEY = os.environ.get("VERY_STREAM_KEY", None)
@@ -125,9 +124,8 @@ if ENV:
         AUTH_TOKEN_DATA = os.environ.get("AUTH_TOKEN_DATA", None)
         if AUTH_TOKEN_DATA != None:
             os.makedirs(TMP_DOWNLOAD_DIRECTORY)
-            t_file = open(TMP_DOWNLOAD_DIRECTORY+"auth_token.txt","w")
-            t_file.write(AUTH_TOKEN_DATA)
-            t_file.close()
+            with open(TMP_DOWNLOAD_DIRECTORY+"auth_token.txt","w") as t_file:
+                t_file.write(AUTH_TOKEN_DATA)
         CUSTOM_STICKER_PACK_NAME = os.environ.get("CUSTOM_STICKER_PACK_NAME", None)
         YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
         GDRIVE_FOLDER_ID = os.environ.get("GDRIVE_FOLDER_ID", None)
@@ -147,12 +145,11 @@ if ENV:
         PM_DATA = os.environ.get("PM_DATA", "ENABLE")
    # Deepai value can get from https://deepai.org/
         DEEP_AI = os.environ.get("DEEP_AI", None)
-      #SUPERFEDBAN
-        FBAN_GROUP_ID = os.environ.get("FBAN_GROUP_ID", None)
-        if FBAN_GROUP_ID:
+        if FBAN_GROUP_ID := os.environ.get("FBAN_GROUP_ID", None):
             FBAN_GROUP_ID = int(FBAN_GROUP_ID)
         EXCLUDE_FED = os.environ.get("EXCLUDE_FED", None)
         FBAN_GROUP = int(os.environ.get("FBAN_GROUP", False))
+
 else:
     class Config(object):
         DB_URI = None
